@@ -40,16 +40,25 @@ public class TestSearch {
         delay(Constants.DETIK);
         searchProduct.setSearchItem();
         delay(Constants.DETIK);
-        Assert.assertEquals(searchProduct.getTextTotalItem(), "Menampilkan 1 - 60 barang dari total 5.1jt+ untuk");
-       delay(Constants.DETIK);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,1500)");
-        System.out.println("Menampilkan 1 - 60 barang dari total 5.1jt+ untuk dompet");
+        js.executeScript("window.scrollBy(0,600)");
+        Assert.assertEquals(searchProduct.getTextProduct(), "dbE TWS10 V2 High Fidelity TWS Bluetooth Earphone ENC Microphone");
+        System.out.println("Choose product : dbE TWS10 V2 High Fidelity TWS Bluetooth Earphone ENC Microphone");
     }
+
+    @Test
+    public void testTotalProduct() {
+        delay(Constants.DETIK);
+        searchProduct.clickProduct();
+        Assert.assertEquals(searchProduct.getTextTotalItem(), "Stok Total: 25");
+        System.out.println("Stok Total: 25");
+    }
+
+    //Menampilkan 1 - 60 barang dari total 5.1jt+ untuk
 
     static void delay(int detik) {
         try {
-            Thread.sleep(1000*detik);
+            Thread.sleep(1000 * detik);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
